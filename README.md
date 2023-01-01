@@ -1,4 +1,4 @@
-To install all requirements in the folder of the project:
+To install all requirements run in the folder of the project the following command:
 ```
 pip install -r requirements.txt
 ```
