@@ -9,7 +9,7 @@ To run the program just run the command
 
 in your terminal.
 
-To run the program just run 
+To run a report just run 
 
 ``` behave -f allure_behave.formatter:AllureFormatter -o %allure_result_folder% ./features```
 
