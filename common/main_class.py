@@ -9,7 +9,30 @@ import time
 import json
 import re
 
+# Імплементація сінгелтона з бібліотеки handy-decorators, котра
+# є наразі застарілою
 
+
+def singleton(cls):
+    from functools import wraps
+    previous_instances = {}
+
+    @wraps(cls)
+    def wrapper(*args, **kwargs):
+        if cls in previous_instances and\
+            previous_instances.get(cls, None).get('args')\
+                == (args, kwargs):
+            return previous_instances[cls].get('instance')
+        else:
+            previous_instances[cls] = {
+                'args': (args, kwargs),
+                'instance': cls(*args, **kwargs)
+            }
+            return previous_instances[cls].get('instance')
+    return wrapper
+
+
+@singleton
 class AddRemoveUser:
     def __init__(
             self, binary_location: str | None, service_location: str | None):
